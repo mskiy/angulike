@@ -11,7 +11,8 @@
               return {
                   restrict: 'A',
                   scope: {
-                      fbLike: '=?'
+                      fbLike: '=?',
+                      share: '=?'
                   },
                   link: function (scope, element, attrs) {
                       if (!$window.FB) {
@@ -44,7 +45,7 @@
                               });
                               return;
                           } else {
-                              element.html('<div class="fb-like"' + (!!scope.fbLike ? ' data-href="' + scope.fbLike + '"' : '') + ' data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>');
+                              element.html('<div class="fb-like"' + (!!scope.fbLike ? ' data-href="' + scope.fbLike + '"' : '') + ' data-layout="button_count" data-action="like" data-show-faces="true" data-share="' + !!scope.share + '"></div>');
                               $window.FB.XFBML.parse(element.parent()[0]);
                           }
                       }
